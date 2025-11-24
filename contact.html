@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event</title>
+  <link rel="icon" href="https://api.dicebear.com/5.x/identicon/svg?seed=Blog-1page" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/master.css" />
+  <style>
+    .d-flex {
+      display: flex;
+    }
+
+    .fd-col {
+      flex-direction: column;
+    }
+
+    .flex-wrap {
+      flex-wrap: wrap;
+    }
+
+    .jc-c {
+      justify-content: center;
+    }
+
+    .ai-c {
+      align-items: center;
+    }
+
+    .g-8 {
+      gap: 8px;
+    }
+
+    .g-16 {
+      gap: 16px;
+    }
+
+    .flex-1 {
+      flex: 1;
+    }
+
+    .f-1-1-300 {
+      flex: 1 1 300px;
+    }
+
+    .p-16 {
+      padding: 16px;
+    }
+
+    .w-full {
+      width: 100%;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    label {
+      text-align: left;
+    }
+
+    input,
+    textarea,
+    select {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- EN-TETE DU SITE -->
+  <header>
+    <div class="header__container">
+      <nav>
+        <div>
+          <a id="logo" class="link" href="index.html">
+            <!-- LOGO -->
+            <img src="images/logo.svg" width="100" alt="Logo" />
+          </a>
+        </div>
+        <div>
+          <a class="link" href="index.html">Accueil</a>
+          <a class="link" href="#">Classement</a>
+          <a class="link" href="#">Évènements</a>
+          <a class="link" href="#">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <!-- CONTENU PRINCIPAL DE LA PAGE (UNIQUE) -->
+  <main>
+    <article class="single">
+      <div class="p-16">
+        <h1>Contactez-nous</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum ipsam
+          explicabo doloribus architecto deserunt cupiditate, corporis
+          doloremque asperiores aperiam, ab quo, possimus natus. Assumenda
+          veritatis voluptas cumque doloremque? Laboriosam, perspiciatis.
+        </p>
+      </div>
+      <form id="contact-form" class="contact-form p-16 d-flex fd-col g-16 jc-c ai-c" action="#" method="post">
+        <div class="d-flex flex-wrap g-16 w-full">
+          <div class="d-flex fd-col g-8 w-full f-1-1-300">
+            <label class="w-full" for="first-name">Prénom: <span style="color: red">*</span></label>
+            <input class="w-full" type="text" id="first-name" name="first_name" placeholder="Entrez votre prénom"
+              required />
+          </div>
+          <div class="d-flex fd-col g-8 w-full f-1-1-300">
+            <label class="w-full" for="last-name">Nom: <span style="color: red">*</span></label>
+            <input class="w-full" type="text" id="last-name" name="last_name" placeholder="Entrez votre nom" required />
+          </div>
+        </div>
+        <div class="d-flex flex-wrap g-16 w-full">
+          <div class="d-flex fd-col g-8 w-full">
+            <label class="w-full" for="email">Email: <span style="color: red">*</span></label>
+            <input class="w-full" type="email" id="email" name="email" placeholder="votre.email@example.com" required />
+          </div>
+          <div class="d-flex fd-col g-8 w-full">
+            <label class="w-full" for="phone">Téléphone:</label>
+            <input class="w-full" type="tel" id="phone" name="phone" placeholder="06 12 34 56 78" />
+          </div>
+        </div>
+        <div class="d-flex flex-wrap g-16 w-full">
+          <!-- Ajouter adresse, code postal et ville -->
+
+          <div class="d-flex fd-col g-8 f-1-1-300">
+            <label class="w-full" for="address">Adresse: <span style="color: red">*</span></label>
+            <input class="w-full" type="text" id="address" name="address" placeholder="Entrez votre adresse" required />
+          </div>
+          <div class="d-flex fd-col g-8 f-1-1-300">
+            <label class="w-full" for="city">Ville: <span style="color: red">*</span></label>
+            <input class="w-full" type="text" id="city" name="city" placeholder="Entrez votre ville" required />
+          </div>
+          <div class="d-flex fd-col g-8 f-1-1-300">
+            <label class="w-full" for="postal-code">Code Postal: <span style="color: red">*</span></label>
+            <input class="w-full" type="text" id="postal-code" name="postal_code" placeholder="Entrez votre code postal"
+              readonly required />
+          </div>
+        </div>
+        <div class="d-flex g-16 w-full">
+          <div class="d-flex fd-col g-8 flex-1">
+            <label class="w-full" for="subject">Sujet: <span style="color: red">*</span></label>
+            <select class="w-full" id="subject" name="subject" required>
+              <option value="" disabled selected>
+                -- Sélectionnez un sujet --
+              </option>
+              <option value="general">Général</option>
+              <option value="support">Support</option>
+              <option value="feedback">Retour d'information</option>
+            </select>
+          </div>
+          <div class="flex-1"></div>
+        </div>
+
+        <div class="d-flex fd-col g-8 w-full">
+          <label class="w-full" for="message">Message: <span style="color: red">*</span></label>
+          <textarea class="w-full" id="message" name="message" rows="5" placeholder="Entrez votre message..."
+            required></textarea>
+        </div>
+
+        <button class="btn" type="submit">Envoyer</button>
+      </form>
+      <div class="p-16">
+        <p id="result" class="p-16"></p>
+      </div>
+    </article>
+  </main>
+
+  <div class="design"></div>
+
+  <!-- PIED DE PAGE -->
+  <footer>
+    <div class="footer__container">
+      <section>
+        <h3>About</h3>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+        <p>dolorum alias id</p>
+        <p>possimus minima earum</p>
+      </section>
+      <section>
+        <h3>Social Media</h3>
+        <div class="rs">
+          <span class="rs__icon">
+            <i class="fab fa-facebook-square"></i>
+          </span>
+          <span class="rs__icon">
+            <i class="fab fa-twitter-square"></i>
+          </span>
+          <span class="rs__icon">
+            <i class="fab fa-linkedin"></i>
+          </span>
+        </div>
+      </section>
+      <section>
+        <h3>Classement</h3>
+        <p>
+          blanditiis consequuntur ducimus sit amet consectetur, adipisicing
+          elit.
+        </p>
+        <p>consectetur magni rerum</p>
+        <p>sunt sunt et</p>
+      </section>
+    </div>
+
+    <p class="footer__copyright"><small>© Copyright AFPA 2024 </small></p>
+  </footer>
+
+  <script>
+    const form = document.querySelector("#contact-form");
+    const resultDiv = document.querySelector("#result");
+    // URL de l'API
+    const url = "https://api-adresse.data.gouv.fr/search/";
+
+    const params = {
+      q: "marseille",
+      type: "municipality",
+      limit: 1,
+    };
+
+    if (form && resultDiv) {
+      // Extraire automatiquement tous les champs du formulaire
+
+      [...form.elements].forEach((element) => {
+        element.addEventListener("invalid", (event) => {
+          event.target.style.borderColor = "red";
+        });
+        element.addEventListener("input", async (event) => {
+          console.log(event.target.value);
+          if (event.target.value === "" || event.target.value.length < 2 || event.target.value.length > 50) {
+            event.target.style.borderWidth = "2px";
+            event.target.style.borderColor = "red";
+            // Add adjacent error message
+            element.setCustomValidity(
+              "Votre nom ou prénom doit contenir entre 2 et 50 caractères."
+            );
+          } else {
+            event.target.style.borderWidth = "2px";
+            event.target.style.borderColor = "green";
+            event.target.setCustomValidity("");
+          }
+          if (event.target.name === "city" && event.target.value.length >= 3) {
+            form.elements.postal_code.value = await getResults(event.target.value);
+          }
+        });
+      });
+    }
+
+    async function citySearch(url, params) {
+      // Construire l'URL avec les paramètres
+
+      const request =
+        url +
+        "?q=" +
+        params.q +
+        "&type=" +
+        params.type +
+        "&limit=" +
+        params.limit;
+      try {
+        const response = await fetch(request, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.dir(data);
+
+        return data;
+      } catch (error) {
+        console.error("Erreur lors de la récupération des données :", error);
+        return null;
+      }
+    }
+
+    async function getResults(saerchterm) {
+      if (saerchterm.length < 3) return "Aucun résultat";
+      params.q = saerchterm;
+      const data = await citySearch(url, params);
+      if (data && data.features && data.features.length > 0) {
+        const postalCode = data.features[0].properties.postcode;
+        return postalCode;
+      } else {
+        return "Aucun résultat";
+      }
+    }
+  </script>
+</body>
+
+</html>

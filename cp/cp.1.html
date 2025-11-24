@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code postal</title>
+  <link rel="icon" href="https://api.dicebear.com/5.x/identicon/svg?seed=Blog-1page" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/master.css">
+  <style>
+    .d-flex {
+      display: flex;
+    }
+
+    .fd-col {
+      flex-direction: column;
+    }
+
+    .flex-wrap {
+      flex-wrap: wrap;
+    }
+
+    .jc-c {
+      justify-content: center;
+    }
+
+    .ai-c {
+      align-items: center;
+    }
+
+    .g-8 {
+      gap: 8px;
+    }
+
+    .g-16 {
+      gap: 16px;
+    }
+
+    .flex-1 {
+      flex: 1;
+    }
+
+    .p-16 {
+      padding: 16px;
+    }
+
+    .w-full {
+      width: 100%;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    label {
+      text-align: left;
+    }
+
+    input,
+    textarea,
+    select {
+      padding: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- EN-TETE DU SITE -->
+  <header>
+    <div class="header__container">
+      <nav>
+        <div>
+          <a id="logo" class="link" href="index.html">
+            <!-- LOGO -->
+            <img src="/images/logo.svg" width="100" alt="Logo">
+          </a>
+        </div>
+        <div>
+          <a class="link" href="index.html">Accueil</a>
+          <a class="link" href="#">Classement</a>
+          <a class="link" href="#">Évènements</a>
+          <a class="link" href="#">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <!-- CONTENU PRINCIPAL DE LA PAGE (UNIQUE) -->
+  <main>
+    <article class="single">
+      <div class="p-16">
+        <h1>Rechercher le code postal de votre commune</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum ipsam
+          explicabo doloribus architecto deserunt cupiditate, corporis
+          doloremque asperiores aperiam, ab quo, possimus natus. Assumenda
+          veritatis voluptas cumque doloremque? Laboriosam, perspiciatis.
+        </p>
+      </div>
+      <form id="contact-form" class="contact-form p-16 g-16 jc-c ai-c" action="#" method="post">
+        <div class="">
+          <label class="w-full" for="city-name">Prénom: <span style="color: red;">*</span></label>
+          <div class="d-flex w-full">
+            <input class="w-full" type="text" id="city-name" name="city-name" placeholder="Entrez votre prénom"
+              required>
+            <button class="btn" type="submit">Envoyer</button>
+          </div>
+
+        </div>
+      </form>
+      <div class="p-16">
+        <p id="result" class="p-16"></p>
+      </div>
+    </article>
+  </main>
+
+  <div class="design"></div>
+
+  <!-- PIED DE PAGE -->
+  <footer>
+    <div class="footer__container">
+      <section>
+        <h3>About</h3>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+        <p>dolorum alias id</p>
+        <p>possimus minima earum</p>
+      </section>
+      <section>
+        <h3>Social Media</h3>
+        <div class="rs">
+          <span class="rs__icon">
+            <i class="fab fa-facebook-square"></i>
+          </span>
+          <span class="rs__icon">
+            <i class="fab fa-twitter-square"></i>
+          </span>
+          <span class="rs__icon">
+            <i class="fab fa-linkedin"></i>
+          </span>
+        </div>
+      </section>
+      <section>
+        <h3>Classement</h3>
+        <p>
+          blanditiis consequuntur ducimus sit amet consectetur, adipisicing
+          elit.
+        </p>
+        <p>consectetur magni rerum</p>
+        <p>sunt sunt et</p>
+      </section>
+    </div>
+
+    <p class="footer__copyright"><small>© Copyright AFPA 2024 </small></p>
+  </footer>
+
+  <script>
+    const form = document.querySelector("#contact-form");
+    const resultDiv = document.querySelector("#result");
+    if (form) {
+      // Extraire automatiquement tous les champs du formulaire
+
+
+
+      // URL de l'API
+      const url = "https://api-adresse.data.gouv.fr/search/"
+
+      const commune = "Marseille"
+      // Paramètres
+      let params = {
+        q: commune,
+        type: "municipality",  // Chercher seulement les communes
+        limit: 1 //Limiter à 1 résultat
+      }
+
+      async function citySearch(params) {
+        // Construire l'URL avec les paramètres
+        const queryString = new URLSearchParams(params).toString();
+        const requestUrl = `${url}?${queryString}`;
+
+        try {
+          const response = await fetch(requestUrl);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const data = await response.json();
+          console.dir(data);
+
+          return data;
+        } catch (error) {
+          console.error("Erreur lors de la récupération des données :", error);
+          return null;
+        }
+      }
+
+      console.log(citySearch(params));
+
+
+      async function getResults() {
+        [...form.elements].forEach(element => {
+          console.log(element.name, element.value);
+          element.addEventListener("input", async (event) => {
+            params.q = event.target.value;
+            const data = await citySearch(params);
+            if (data && data.features && data.features.length > 0) {
+              resultDiv.textContent = data.features[0].properties.postcode;
+            } else {
+              resultDiv.textContent = '<p>Aucune commune trouvée</p>';
+            }
+          });
+        });
+
+      }
+      getResults();
+    }
+  </script>
+</body>
+
+</html>
